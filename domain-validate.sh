@@ -18,7 +18,7 @@ echo '''
 '''
 for domain in $(cat website.txt)
 do
-code=$(curl -s -o /dev/null -I -w "%{http_code}" http://$domain)
+code=$(curl -L -s -o /dev/null -I -w "%{http_code}" http://$domain)
 if [[ $code == "200" || $code == "301" || $code == "403" || $code == "404" || $code == "503" ]]
 then
 echo "$domain"
